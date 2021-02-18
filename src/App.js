@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
-import {AuthContext} from './Context/AuthContext';
+import AuthContext from './Context/AuthContext';
 import Login from './Component/Login';
 import Home from './Component/Home';
 
@@ -13,14 +13,13 @@ function App() {
   return (
     <>
       <Router>
+        <Route component={Login} path="/login" exact />
         {
-          //auth가 없으면 login
+          auth ? <Redirect to="login" /> : <Home />
         }
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/home" component={Home}></Route>
       </Router>
     </>
   );
 }
 
-export default App;
+export default App; 
