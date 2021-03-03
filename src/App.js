@@ -15,8 +15,9 @@ function App() {
       <Router>
         <Route component={Login} path="/login" exact />
         {
-          auth ? <Redirect to="login" /> : <Home />
+          auth ? <Redirect to="login" /> : <Redirect to="home" />
         }
+        <Route component={Home} path="/home"/>
       </Router>
     </>
   );
